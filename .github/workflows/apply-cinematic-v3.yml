@@ -1,0 +1,33 @@
+name: Apply Sentiment Life cinematic v3
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cinematic-v3.css'
+      - 'cinematic-v3.js'
+      - 'tools/apply-cinematic-v3.py'
+      - '.github/workflows/apply-cinematic-v3.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  inject:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inject cinematic assets into index
+        run: python tools/apply-cinematic-v3.py
+      - name: Commit injected index
+        run: |
+          if git diff --quiet -- index.html; then
+            echo "index.html already references cinematic v3"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html
+          git commit -m "Wire cinematic v3 into Sentiment Life"
+          git push
