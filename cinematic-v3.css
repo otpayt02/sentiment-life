@@ -1,0 +1,37 @@
+/* Sentiment Life — continuity morph / memory aperture v0.3 */
+#categories{min-height:220vh;align-items:flex-start;padding-top:18vh;padding-bottom:24vh}
+#categories>.shell{min-height:180vh}
+#categories #categoryBars{position:sticky;top:15vh;min-height:68vh;display:flex;flex-direction:column;justify-content:center;overflow:visible;isolation:isolate}
+#categories .bar-row{position:relative;transform-origin:center;will-change:transform,opacity,filter}
+#categories .bar-row>div:first-child,#categories .bar-row>div:last-child{transition:opacity .2s linear;will-change:opacity,transform}
+#categories .bar{position:relative;z-index:2;transform-origin:center;will-change:transform,width,filter;overflow:visible}
+#categories .bar>span{position:relative;box-shadow:0 0 calc(18px + var(--morph-energy,0)*34px) rgba(240,165,74,calc(.08 + var(--morph-energy,0)*.28));will-change:transform,filter,opacity}
+#categories .bar>span:after{content:"";position:absolute;right:-2px;top:50%;width:5px;height:5px;border-radius:50%;background:#ffe2b6;transform:translateY(-50%) scale(var(--morph-energy,0));box-shadow:0 0 20px #f0a54a}
+.story-bridge{--bridge-p:0;--bridge-v:0;position:relative;height:340vh;background:transparent;color:var(--cream);z-index:4}
+.story-bridge__sticky{position:sticky;top:0;height:100svh;min-height:620px;overflow:hidden;isolation:isolate;display:grid;place-items:center;background:radial-gradient(circle at 50% 48%,rgba(240,165,74,.06),transparent 24%),radial-gradient(circle at 50% 50%,rgba(74,55,39,.11),transparent 48%)}
+.story-bridge__veil{position:absolute;inset:-10%;background:radial-gradient(circle at 50% 50%,transparent 0 13%,rgba(5,5,6,.12) 26%,rgba(5,5,6,.78) 73%,#080808 100%);opacity:clamp(.15,calc(.12 + var(--bridge-p)*.78),.95);transform:scale(calc(1.08 - var(--bridge-p)*.08));pointer-events:none}
+.story-bridge__threads{position:absolute;inset:0;z-index:2;pointer-events:none;filter:drop-shadow(0 0 15px rgba(240,165,74,.15))}
+.story-thread{position:absolute;left:50%;top:50%;height:2px;width:var(--thread-w,26vw);background:linear-gradient(90deg,transparent 0%,rgba(240,165,74,.12) 12%,rgba(255,218,166,.9) 52%,rgba(240,165,74,.15) 90%,transparent);transform-origin:0 50%;opacity:var(--thread-o,.8);will-change:transform,opacity,filter;border-radius:999px}
+.story-thread:after{content:"";position:absolute;right:10%;top:50%;width:4px;height:4px;border-radius:50%;background:#fff0d4;transform:translateY(-50%);box-shadow:0 0 18px #f0a54a}
+.memory-aperture{position:absolute;left:50%;top:50%;z-index:3;width:min(54vw,620px);aspect-ratio:1;transform:translate(-50%,-50%) scale(var(--ap-scale,.72)) rotate(var(--ap-rot,0deg));will-change:transform,filter,opacity;filter:drop-shadow(0 0 calc(35px + var(--bridge-p)*85px) rgba(240,165,74,.18))}
+.memory-aperture:before,.memory-aperture:after{content:"";position:absolute;inset:4%;border-radius:50%;border:1px solid rgba(255,223,176,.24);box-shadow:inset 0 0 70px rgba(240,165,74,.06),0 0 70px rgba(240,165,74,.06)}
+.memory-aperture:after{inset:16%;border-color:rgba(255,255,255,.10)}
+.memory-aperture__core{position:absolute;inset:22%;border-radius:50%;background:radial-gradient(circle at 48% 42%,rgba(255,235,205,.22),rgba(240,165,74,.08) 26%,rgba(8,8,8,.92) 67%);box-shadow:0 0 110px rgba(240,165,74,.18),inset 0 0 80px #000;overflow:hidden}
+.memory-figure{position:absolute;inset:7%;opacity:calc(.34 + var(--bridge-p)*.54);transform:translate3d(calc((var(--pointer-nx,0))*9px),calc((var(--pointer-ny,0))*7px),0) scale(calc(.86 + var(--bridge-p)*.11));will-change:transform,opacity}
+.memory-figure svg{width:100%;height:100%;overflow:visible}
+.memory-figure .portrait-fill{fill:rgba(244,239,230,.035);stroke:rgba(244,239,230,.62);stroke-width:1.1;vector-effect:non-scaling-stroke}
+.memory-figure .portrait-detail{fill:none;stroke:rgba(240,165,74,.68);stroke-width:.85;vector-effect:non-scaling-stroke;stroke-dasharray:3 6}
+.memory-figure .memory-node{fill:#f0a54a;filter:drop-shadow(0 0 7px rgba(240,165,74,.8))}
+.memory-aperture__swallow{position:absolute;left:50%;top:50%;width:10vmax;height:10vmax;border-radius:50%;background:#040405;transform:translate(-50%,-50%) scale(var(--swallow-scale,.01));box-shadow:0 0 120px rgba(0,0,0,.8);z-index:7;pointer-events:none;will-change:transform}
+.story-bridge__copy{position:absolute;z-index:5;inset:0;display:grid;place-items:center;pointer-events:none}
+.bridge-line{position:absolute;width:min(1000px,calc(100% - 48px));text-align:center;font-size:clamp(3.5rem,9vw,9.2rem);line-height:.84;letter-spacing:-.075em;font-weight:850;text-wrap:balance;margin:0;opacity:0;transform:translate3d(0,42px,0) scale(.94);filter:blur(8px);will-change:transform,opacity,filter,clip-path}
+.bridge-line small{display:block;margin-bottom:20px;font-size:.66rem;line-height:1.2;letter-spacing:.22em;text-transform:uppercase;color:#dca76d;font-weight:800}
+.bridge-line em{font-style:normal;color:#f0a54a}
+.bridge-kicker{position:absolute;z-index:8;left:max(20px,5vw);bottom:6vh;color:#9f988f;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;opacity:calc(.35 + (1 - var(--bridge-p))*.4)}
+.bridge-index{position:absolute;z-index:8;right:max(20px,5vw);top:6vh;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:#c9c1b8}
+.atlas-portal-label{position:absolute;z-index:6;left:50%;top:50%;transform:translate(-50%,-50%) scale(var(--atlas-scale,.5));opacity:var(--atlas-opacity,0);font-size:clamp(4rem,15vw,14rem);line-height:.68;letter-spacing:-.09em;font-weight:900;text-align:center;color:#f4efe6;mix-blend-mode:difference;will-change:transform,opacity,filter}
+.atlas-portal-label span{display:block;font-size:.055em;line-height:1;letter-spacing:.25em;text-transform:uppercase;font-weight:800;margin-top:2.6em;color:#f0a54a}
+#atlas{position:relative;z-index:5}
+#atlas>.shell{will-change:transform,opacity,filter}
+@media(max-width:900px){#categories{min-height:180vh}.story-bridge{height:280vh}.memory-aperture{width:min(84vw,560px)}.bridge-line{font-size:clamp(3rem,15vw,6.7rem)}.story-thread{width:42vw}.bridge-index{top:3vh}.bridge-kicker{bottom:3vh}}
+@media(prefers-reduced-motion:reduce){#categories{min-height:auto}.story-bridge{height:auto;min-height:80vh}.story-bridge__sticky{position:relative;height:auto;min-height:80vh}.story-thread,.memory-aperture__swallow{display:none}.memory-aperture{opacity:.24}.bridge-line{position:relative;opacity:1!important;transform:none!important;filter:none!important;margin:24px auto}.story-bridge__copy{position:relative;display:grid;gap:30px;padding:18vh 0}.atlas-portal-label{display:none}}
