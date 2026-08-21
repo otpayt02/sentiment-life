@@ -153,3 +153,18 @@
   }
   requestAnimationFrame(render);
 })();
+
+// Load the second Sentiment Life intelligence surface without touching the
+// generated archive HTML. Resolves relative to this script so GitHub Pages,
+// localhost, and subpath deployments all work the same way.
+(() => {
+  if (document.querySelector('script[data-sentiment-comet-loader]')) return;
+  const current = document.currentScript;
+  const src = current?.src ? new URL('comet-space.js', current.src).href : 'comet-space.js';
+  const script = document.createElement('script');
+  script.src = src;
+  script.defer = true;
+  script.dataset.sentimentCometLoader = '1';
+  script.onerror = () => console.warn('[Sentiment Life] Comet space failed to load:', src);
+  document.head.appendChild(script);
+})();
